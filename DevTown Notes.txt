@@ -1,0 +1,454 @@
+<!--  HTML - CSS - JS NOTES 
+    1. wrapper elements make code is readable  
+    2. the purpose of ids is for identinfication 
+    3. semantic tag help understand the meaning of the code inside the tag 
+    4. example : header tag , article tag , footer tag , nav tag 
+    5. inline css supersede internal css in case of conflict
+    6. class (.) and id (#) 
+    7. id are different and unique where as classes can be replicated 
+    8.  ul>li {
+            color: #ffbf00;
+        }
+        
+        means direct children (li is direct children of li no nested elements will be affected )
+        
+        ul h2 {
+            color: pink;
+        
+        means all children (h2) will be affected 
+        }
+
+9. id is given preference over class in case of coflict
+    10. ul>li:first-child{
+            color: #ffbf00;
+        }
+
+        ul>li:last-child{
+            color: #ffbf00;
+        }
+
+        ul>li:nth-child(4){
+            color: #ffbf00;
+        }
+        
+        this type of css allows u apply effect on first, last, or some n th child 
+11. psedo selector eg hover allows to add css not permenantly
+12. background allows url as well as color where as background color allows only color 
+13. rather than margin left margin right we can write it as margin: 10px 10px 10px 50px; top right bottom and left  or 
+        margin: 10px 20px 10px=top and bottom 20=left and right 
+14. padding is inside the container margin is outside 
+15. view port is the area where we show content 
+16. percentage width works but in height it doesnt 
+17. vw stands for view width and px stands for pixel 
+18. div dot parent in body automatically creates a div with class name parent 
+19. for a child element percentage unit is reletive to parent of a contain and not view port 
+20. BUT in vw the child overflows the contain and its unit is reletive to the view port 
+21. we use percentage over pixels as every device has different pixels and screen size 
+   - pixel is an absolute unit whereas percentage is a relative unit 
+22.     div{
+        postion : relative; 
+        left: 30px;
+        }
+        means the positioning is relative to its actual positioning
+        in this case shift left by 30px
+
+           
+23.     div{
+        postion : absolute; 
+        left: 30px;
+        }
+        means the positioning is relative to its container's position
+        and if the parent is positioned relative or absolute then only the child will have its positioning relative to parent 
+24. BY DEFAULT BODY IS POSITIONED RELATIVE !!
+25. div{
+        postion : absolute; 
+        left: 30px;
+        }
+        means the positioning is relative to view port 
+26.display property can make a span act as block element and div as a inline elelment 
+27. An image tag is by default inline element 
+28. margin: 12px , auto;  => auto positions div equally from both sides 
+29.flexbox works in one direction either row wise or column wise 
+30. all children will fllow flexbox properties if the parent is flexbox 
+  - flex shrinks the child to fit it in parent container 
+  - flex wrap => wraps all the child elements of the container 
+  - flex direction row defines primary axis here (x axis)
+  - justify content aligns actoring to primary axis 
+  - for non primary axis we use align items 
+31. <link rel="stylesheet" href="style.css"> connects css file with html file 
+ - it is a self closing tag
+32. external font styles are stored in google servers they are loaded once we connect to internet and then applied to html
+33. every input has a default outline as well as border , 
+        - to set border color make outnline to none
+34. in animations we have control over every frame but in transition it is apredefined effect with not much control over it 
+35. TRANSITION
+        - Transition-duration : 1s means the transition will happen gradually in 1 second
+        - transition-property : background-color/height/width
+        - transition-timing-function:ease in / ease out => in developer tools we can custumize the transition using the graph 
+        -transition-delay : 0.5s => delays the transition by 0.5s
+
+36. Transform property - while using transition and animation we can use transform rather than height and width 
+        -scale(1.5) => means it will scale out 1.5 times 
+        - we can scale in x axis , y axis and z axis as well using scaleX(), scaleZ() 
+        - We can rotate along an axis using rotateX(30 deg) => the input value is in degrees 
+        -skew (10deg , 20 deg ) =. the div skews itself , makes odd shape
+        -skewX(30deg) => can skew in a particular axis using 
+        -translateX(20px) => moves along the x axis , same can be done for other axis as well  
+        -translate(50px , 50px) => moves diagnolly 
+        - to add multiple properties add space btw them 
+
+37. shorthand for transition properties
+ transition type             ---------
+ transition timings                  |  ==> transition(ease 0.5 all 1s);
+ transition where to apply           |
+ transition delay            ---------
+
+38. ANIMATION
+        -animation-duration:1s; => defines the duration of animation 
+        - @keyframes play {
+                from {
+                  transform: scale(1);
+                }
+                 to {
+                  transform: scale(1.5);
+                  /*border-radius:20px;*/
+                }
+              } 
+        => means the div will scale from 1 to 1.5 in span of 1 sec 
+        => play is the animation name 
+        -animation-name: play; this is mentioned under the element animation will apply on 
+        -animation-fill-mode : forward => the animation stys in the final state 
+        -animation-fill-mode : reverse => the animation goes back to its initial state 
+        -animation-iteration-count : 10 / infinite =. can be a specified numb or infinite 
+        -animation-direction: normal => goes normal i.e it sizes up ( as specified in keyframes)
+        -animation-direction: reverse => reverse of normal i.e it sizes down 
+        -animation-direction: alternate => switches btw normal and reverse 
+39. creating a element without a tag can be made using div::after or div::before
+        -EXAMPLE :
+               div {
+                        height: 200px;
+                        width: 200px;
+                        position: relative;
+                        background-color: orange;
+                }
+
+                 div::after{
+                        content:"";
+                        height: 100px;
+                        width: 100px;
+                        position:absolute;
+                        background-color: rgb(255, 3, 3);
+                        border-radius: 50%;
+                        transform: translate(-50% ,-50%);
+                }
+40.MEDIA QUERY-
+       - Allow you to fine-tune your styles depending on the height and width of percentage
+       - IT DEFINES BREAKPOINTS ( Once the breakpoint is hit the styles will be applied )
+       - It overides the css written above the media tag plus it will also apply new css as well 
+        div.bar{
+                font-size:70px;
+        }
+
+       @media(max-width: 760px) {
+        div.bar{
+                font-size:30px;
+        }
+       }
+as the frame size decreases below 760 the font size will change to 30px 
+        - MAX AND MIN DIFFERENCE: 
+                => @media(min-width: 760px) is applied when the frame is equal to or more than 760
+                => @media(max-width: 760px) is applied when the frame is less than 760
+                
+41. STARTED GIT AND GITHUB // VERSION CONTROL 
+42.JAVASCRIPT 
+        - An obj is an entity that has some properties 
+        - CLASS is a group of objects with similar properties
+        - const age = 123 (int obj)
+        - const Name = “this is. a string” (int obj)
+        - const isAdult = true
+43. Array is an object in js , we use dot (.) operator to use methods and properties of the objects 
+- method is a function associated with the object 
+        - const names = ['name1”, 'name2’, ‘name3’]
+        - console. log (typeof names) => THE OUTPUT WILL BE OBJECT 
+ - Console in js is an obj that has global scope 
+ - console.log() => prints the output in console window 
+ - console.log(window) => window is also an object with predefined properties 
+
+44. FUNCTION IN JS -  SYNTAX: function funcName(){ block of code }
+        - we can call a function using funcName()
+        - the function can have parameters as well 
+        - undefined is when we declare a var but do not give it values 
+        - undefined is a data type in js 
+45. VARIABLE 
+        -let , const => Local scope
+        - var => global scope
+        - If a is an array 
+        - a.push(x) => adds in last of the array 
+        - a.pop() => removes the last element 
+        - a.shift() => removes first element from array
+        - a.unshift() => adds infront of the array
+
+46. const a=['a','b','c','d']
+    function iterate(currentvalue, currentIndex) { 
+        console.log(currentvalue, currentIndex)}
+    //HERE THE FUNCTION IS DECLARED WHICH WILL GIVE VALUE , INDEX     
+    
+        for( let i=0; i<a.length;i++){iterate(a[i],i)}
+        // THE LOOP WILL PRINT VALUE , INDEX FOR ALL ENTRIES IN ARRAY 
+
+        a.forEach(iterate)
+        // FOREACH FUNCTION DOES THE SAME THINGS AS WELL , hence the output will be same 
+
+47. Hoisting is a feature of js 
+         - if we call a func before declaring it , it will run smoothly as the javascript automaticaaly puts the function starting with 
+         function keyword at the top 
+
+        - A fuction can be declared as a variable as well , they will have same output 
+        //NORMAL FUNCTION
+        function greet(Name) {
+            console.log( 'Hello ' + Name) }
+
+        //FUNCTION STORED IN A VARIABLE
+        const greet2= function(Name){
+            console.log( 'Hello ' + Name)
+        }
+        
+        greet('h')
+        greet2("h2")
+
+48. ARROW FUNCTION - makes the func defination simple
+                   - we can define default values for a function as well 
+                
+eg:     const sum = (a,b) => {console.log( a+b) }
+        const sum = (a,b) => a+b
+        console.log(sum(1,2))
+
+        - we only need to add parenthesis when there are multiple paramters 
+        - else it can be written in a simplified one line format ,for eg:
+                const mul = a => a*100
+                console.log(mul(2))
+
+49.MAP FUNCTION prints the return value as output 
+        - it returns for each value of the array
+        - hence if used to select even values from an array , it will give undefined for odd values in the output along with the even numbs
+        - FILTER FUNCTION : just like map i.e will iterate over each element but will return only TRUE values 
+        - FIND FUNCTION : it finds an element in array if found returns the element else returns undefined 
+50. => THIS KEYWORD : returns the window object , points to the parent object 
+    => SPREAD OPERATOR : It is used to replicate/ clone into a independent object 
+                        - but it spreads only at a single level 
+        eg : const a =[1,2,3]
+                const b=[...a] => this operator is called spread 
+                // b is an independent object
+        eg : const a = {
+                name:'ram',
+                car:{
+                        brand:'honda'
+                        model:'h5'
+                }     
+             }
+
+             const b={ ...a }
+
+             a.name='riya'
+             a.car.brand='mercedes'
+             a.car.model='C300D'
+
+             console.log(b)  => this will give the name ram but car brand and model will change to mercedes as that is changed on level 2 
+             - it is like an box (obj) inside a box (obj) the first box is open(spread) while the second remains closed (not spread)
+
+51. javascript is build on ECMA Script , right now EC-6 is the most widely used version rn 
+52. TEMPLATE STRINGS -
+        const name = 'Harsheeta'
+        const age = 20
+        console.log(name + ' is ' +age + ' years old .')
+  =>    const result = `${name} is ${age} years old `
+        console.log(result)
+
+        // BOTH WILL GIVE THE SAME OUTPUT (this was used earlier, before EC-6 )
+53.FOR IN LOOP is used to iterate over OBJECTS
+54. DESTRUCTURING - we can assign names/ var to object's atrributes or array's indexes 
+eg: const a = {
+        name:'ram',
+        car:{
+                brand:'honda'
+                model:'h5'}     
+      }
+
+      const{name:name1,age: personage}=a 
+      console.log(name1,personage)
+
+55.DOM => DOCUMENT OBJECT MODEL : 
+        - The browser converts each object into a node of the tree just by looking at the structure 
+        - Each node is a js obj , the tree is called render tree 
+        - DOM governs how the tree is created 
+        - since each element is now a js obj we can manipulate the obj's attributes 
+        - some methods are :
+                => getElementById : used to access element by id 
+                =>getElementByClassElement : used to access elements 
+                => innerHTML : used to access the inner content of an element 
+                => .style :used to apply css properties eg- object.style = 'color:orange'
+                => querySelector : selects the first element using a css selector
+                => querySelectorAll : selects all the elements using a css selector 
+      
+      - //HTML 
+                <h1 id="headin"> JAVASCRIPT </h1>
+                <ul id="list"> </ul>
+        
+        //JS
+        const headingobj = document.getElementById('heading')
+        const listobj= document.getElementById("list")
+        const arr=['element1','element2','element3','element4']
+
+        arr.forEach((element)=> {
+            const li = document.createElement('li')
+
+            // li.innerHTML = element
+            // another way of doing this without innerHTML is
+
+            const text = document.createTextNode(element)
+            li.appendChild(text)
+            // we create a textnode add it to 'li' then add 'li' to list 
+
+            listobj.appendChild(li)
+           
+        })        
+
+=> getElementById returns a single value where as getElementByClassElement returns an array
+=> classList is a complex obj, it returns array like obj called DOMTokenList that have methods add and removes
+=> toggle : replaces if else statements to a single line 
+        - it will chk if a class is present , if not present it will add the class else remove 
+        - eg : used in dark-light theme changing 
+
+56. EVENTS : an action occured is an event
+#1 when button is clicked details of event are printed in console
+eg:      => onclick='functionName()' is used with html elements
+        const button = document.querySelector('button')
+        const any =(event)=>{
+            console.log(event)
+        }
+        button.addEventListener('click',any)
+#2 when the mouse-hovers (can give click also) on the screen the x and y axis is returened to the user 
+and on the screen the area is marked with red circles 
+eg:      => const body = document.querySelector('body')
+        body.addEventListener('mousemove',(event)=>{
+        console.log(`you clicked on this position: ${event.clientX},${event.clientY}`)
+        const ele = document.createElement('div')
+        ele.style = `
+        position : absolute;
+        top : ${event.clientY}px;
+        left : ${event.clientX}px;
+        width : 10px;
+        height : 10px;
+        background-color : red;
+        border-radius: 50%;
+        `                       => use backticks to create a template string
+        body.appendChild(ele) }) 
+
+#3 TEXT appears on screen after scrolling certain amount of time 
+eg:     => const body = document.querySelector('body')
+        const button = document.querySelector('button')
+
+        document.addEventListener("scroll" , (event)=>{
+        console.log(window.scrollY)
+        if (window.scrollY > 600){
+        const ele =document.createElement('h1')
+        body.appendChild(ele)
+        ele.innerText= "Harsheeta kapoor"
+        ele.style= `
+        position:absolute;
+        top:450px;
+        `
+    }
+})
+
+#4 PROGRESS BAR progresses as we scroll 
+         - //HTML 
+         <body>
+    <progress max=100 value="50"> </progress> 
+    <div style=" margin:20px 10px" id="content"> some 1000 words </div>
+     
+         -//CSS
+          body{
+        height:100vh;
+    }
+    progress{
+        width:80%;
+        display:block;
+        position:fixed;
+        margin:
+    }
+
+    -//JS 
+    const content = document.querySelector('#content')
+const progressbar = document.querySelector('progress')
+
+const CH = content.clientHeight
+
+document.addEventListener("scroll" , (event)=>{
+    const scroll = window.scrollY
+    const percentage = scroll / (CH - window.innerHeight)
+    console.log(percentage*100)
+    progressbar.value = (percentage*100).toFixed(0)
+})
+
+
+57. An actionlistner accepts the second parameter as a function , NOT  a function call 
+
+58.JSON
+        => JSON is a data format that is used to parse in js 
+        => It converts arrays , string , booleans , objects etc
+        => JSON.stringify() and JSON.parse()
+
+59.Promises in js :
+        - promises are used for parallel excution of code 
+        - It is the solution to the callback Promises
+        - A promise is a promise of code execution 
+        - the code will either execute or fail 
+        - js is asyncronous in nature hence it will execute setTimeout function after the time specified , 
+                till then the rest code wont wait but execute
+        -Let promise = new Promise(function(resolve, reject) { 
+                 //code
+        })catch ((error)=>{
+                //catches error generated
+        })     
+        // THIS IS THE SYNTAX OF A PROMISE 
+
+        // CALL THE PROMISE using .then 
+        promise.then()
+
+ 60. - using FETCH we can make a http request , it makes a getdata request 
+     - AWAIT  is always used with promises 
+     const getTodo = async()=>{
+        try{
+                const result = await fetch " ";
+                const data = await result.json();
+        }catch(err){ 
+                console.log(err)}
+     }
+     getTodo();
+
+     - Await is not parallely executed , it doesnt let the code move until its executted whether synchro or asynchro
+     - but suppose we want them to excute together , then we use promiise.all 
+     - FOR EXAMPLE ;-
+     const getTodos = async () => {
+    try {
+        console.log(1);
+        const p1 = new Promise((resolve) => {
+            setTimeout(() => resolve(), 4000);
+        })
+
+        await p1
+        console.log(2);
+        const p2 = new Promise((resolve) => {
+            setTimeout(() => resolve(), 5000);
+        })
+
+        await p2
+        console.log(3)
+    } catch (err) {
+        console.log(err)
+    }
+};
+
+getTodos();
+console.log ("hello")
